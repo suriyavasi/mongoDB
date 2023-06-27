@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mongoDB</title>
+</head>
+<body>
+    <h1>mongo DB</h1>
+    {{message}}
+    <br>
+    {{#if edit_id}}
+          <h3>Edit</h3>
+     <form method="post" action="/update_movies/{{edit_id}}">
+        <label1 for="">Movies</label1>
+        <input type="text" name="movies" required value="{{edit_movie.movies}}">
+        <label for="">Director</label>
+        <input type="text" name="director"required value="{{edit_movie.director}}">
+        <input type="submit">
+     </form><br><br>
+      
+      {{else}}
+
+
+    <h3>create</h3>
+     <form method="post" action="/storemovies">
+        <label1 for="">Movies</label1>
+        <input type="text" name="movies" required>
+        <label for="">Director</label>
+        <input type="text" name="director"required>
+        <input type="submit">
+     </form><br><br>
+
+     
+     {{/if}}
+
+      
+    
+
+
+
+
+    <ul>
+        {{#each film}}
+        <li>{{this.movies}} - {{this.director}} <a href="/?edit_id={{this._id}}">edit</a> <a href="/?delete_id={{this._id}}" onclick="return confirm('you want to delete')">delete</a></li>
+        {{/each}}
+    </ul>
+</body>
+</html>
